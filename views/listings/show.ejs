@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= listing.title %> - Your Next Stay</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; max-width: 800px; }
+        .listing-image { width: 100%; max-width: 600px; height: 400px; object-fit: cover; border-radius: 10px; }
+        .price { color: #e74c3c; font-weight: bold; font-size: 1.5em; }
+        .location { color: #7f8c8d; font-size: 1.1em; }
+        .description { margin: 20px 0; line-height: 1.6; }
+        .btn { background-color: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; margin: 5px; }
+        .btn:hover { background-color: #2980b9; }
+        .btn-danger { background-color: #e74c3c; }
+        .btn-danger:hover { background-color: #c0392b; }
+        .actions { margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1><%= listing.title %></h1>
+    <img src="<%= listing.image %>" alt="<%= listing.title %>" class="listing-image">
+    
+    <div class="description">
+        <p><%= listing.description %></p>
+    </div>
+    
+    <p class="price">₹<%= listing.price.toLocaleString("en-IN") %> per night</p>
+    <p class="location">📍 <%= listing.location %>, <%= listing.country %></p>
+    
+    <div class="actions">
+        <a href="/listings" class="btn">← Back to All Listings</a>
+        <a href="/listings/<%= listing._id %>/edit" class="btn">Edit this Listing</a>
+        <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" style="display: inline;">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this listing?')">Delete this listing</button>
+        </form>
+    </div>
+</body>
+</html>
