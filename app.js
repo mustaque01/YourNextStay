@@ -5,6 +5,7 @@ const Listing = require('./models/listing.js');
 const path = require("path");
 const methodOverride = require("method-override");
 
+
 // Set up view engine and middleware
 app.set('view engine', 'ejs'); 
 app.set('views', path.join(__dirname, 'views'));
